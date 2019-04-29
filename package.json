@@ -9,6 +9,7 @@
     "react-scripts": "3.0.0"
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^17.1.0",
     "gh-pages": "^2.0.1"
   },
   "scripts": {
@@ -20,7 +21,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "airbnb"
+    ]
   },
   "browserslist": {
     "production": [
