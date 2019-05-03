@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://honeykingdom.github.io",
   "dependencies": {
-    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",
@@ -12,7 +11,8 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.0.1",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
     "predeploy": "npm run build",
