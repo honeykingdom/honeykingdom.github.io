@@ -5,7 +5,7 @@ import Player from './Player';
 import NonoliveMessage from './NonoliveMessage';
 import { STREAM_SERVICES, getChatUrl, getPlayerUrl } from './utils/streamServices';
 import { getPlayerFromUrl, getChatsFromUrl } from './utils/urlParams';
-// import { ReactComponent as FullscreenIcon } from './icons/fullscreen.svg';
+import { ReactComponent as FullscreenIcon } from './icons/fullscreen.svg';
 
 document.title = 'HoneyMad';
 
@@ -24,7 +24,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 `;
-
 const Container = styled.div`
   display: flex;
   height: 100vh;
@@ -41,20 +40,20 @@ const NonoliveOverflow = styled.div`
   height: 60px;
   background-color: #313131;
 `;
-// const Fullscreen = styled(FullscreenIcon)`
-//   display: inline-flex;
-//   width: 26px;
-//   height: 26px;
-//   margin-left: auto;
-//   cursor: pointer;
-//   color: #fff;
-//   transition-duration: 0.2s;
-//   transition-property: color;
+const Fullscreen = styled(FullscreenIcon)`
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  margin-left: auto;
+  cursor: pointer;
+  color: #fff;
+  transition-duration: 0.2s;
+  transition-property: color;
 
-//   &:hover {
-//     color: #e33d3d;
-//   }
-// `;
+  &:hover {
+    color: #e33d3d;
+  }
+`;
 const StyledPlayer = styled(Player)`
   position: relative;
   border: none;
@@ -110,6 +109,17 @@ const App = () => {
   const chats = getChatsFromUrl(urlParams.get('chats'));
 
   const [activeChatId, setActiveChatId] = useState(chats[0].id);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const handleFullscreenClick = () => {
+    if (isFullscreen && document.fullscreenElement) {
+      setIsFullscreen(false);
+      document.exitFullscreen();
+    } else {
+      setIsFullscreen(true);
+      document.documentElement.requestFullscreen();
+    }
+  };
 
   // Убираем чат nonolive если он совпадает с каналом плеера
   const renderedChats = chats.filter(
@@ -123,7 +133,7 @@ const App = () => {
         {player.service === STREAM_SERVICES.NONOLIVE && (
           <NonoliveOverflow>
             <NonoliveMessage />
-            {/* <Fullscreen /> */}
+            <Fullscreen onClick={handleFullscreenClick} />
           </NonoliveOverflow>
         )}
         <ChatTabs>
