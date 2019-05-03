@@ -1,3 +1,9 @@
+export const STREAM_SERVICES = {
+  TWITCH: 'twitch',
+  NONOLIVE: 'nonolive',
+  GOODGAME: 'goodgame',
+};
+
 export const getChatUrl = ({ service, payload }) => {
   switch (service) {
     case 'twitch':
