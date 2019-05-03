@@ -1,7 +1,7 @@
 export const STREAM_SERVICES = {
   TWITCH: 'twitch',
   NONOLIVE: 'nonolive',
-  // GOODGAME: 'goodgame',
+  GOODGAME: 'goodgame',
 };
 
 export const getChatUrl = ({ service, payload }) => {
@@ -9,6 +9,9 @@ export const getChatUrl = ({ service, payload }) => {
     case STREAM_SERVICES.TWITCH:
     default:
       return `//www.twitch.tv/embed/${payload}/chat?darkpopout`;
+
+    case STREAM_SERVICES.GOODGAME:
+      return `//goodgame.ru/chat/${payload}`;
 
     case STREAM_SERVICES.NONOLIVE:
       return `//www.nonolive.com/popout/chat/${payload}`;
@@ -20,6 +23,9 @@ export const getPlayerUrl = ({ service, payload }) => {
     case STREAM_SERVICES.TWITCH:
     default:
       return `//player.twitch.tv/?channel=${payload}`;
+
+    case STREAM_SERVICES.GOODGAME:
+      return `//goodgame.ru/player?${payload}`;
 
     case STREAM_SERVICES.NONOLIVE:
       return `//www.nonolive.com/room/${payload}`;
