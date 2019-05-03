@@ -1,27 +1,27 @@
 export const STREAM_SERVICES = {
   TWITCH: 'twitch',
   NONOLIVE: 'nonolive',
-  GOODGAME: 'goodgame',
+  // GOODGAME: 'goodgame',
 };
 
 export const getChatUrl = ({ service, payload }) => {
   switch (service) {
-    case 'twitch':
+    case STREAM_SERVICES.TWITCH:
     default:
       return `//www.twitch.tv/embed/${payload}/chat?darkpopout`;
 
-    case 'nonolive':
+    case STREAM_SERVICES.NONOLIVE:
       return `//www.nonolive.com/popout/chat/${payload}`;
   }
 };
 
 export const getPlayerUrl = ({ service, payload }) => {
   switch (service) {
-    case 'twitch':
+    case STREAM_SERVICES.TWITCH:
     default:
       return `//player.twitch.tv/?channel=${payload}`;
 
-    case 'nonolive':
+    case STREAM_SERVICES.NONOLIVE:
       return `//www.nonolive.com/room/${payload}`;
   }
 };

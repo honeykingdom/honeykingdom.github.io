@@ -3,11 +3,11 @@ import { STREAM_SERVICES } from './streamServices';
 const CHANNEL_SEPARATOR = '@';
 const CHATS_SEPARATOR = ',';
 
-const DEFAULT_PLAYER = { service: 'twitch', payload: 'honeymad' };
+const DEFAULT_PLAYER = { service: STREAM_SERVICES.TWITCH, payload: 'honeymad' };
 
 const DEFAULT_CHATS = [
-  { id: 1, service: 'twitch', payload: 'honeymad' },
-  { id: 2, service: 'twitch', payload: 'nytick' },
+  { id: 1, service: STREAM_SERVICES.TWITCH, payload: 'honeymad' },
+  { id: 2, service: STREAM_SERVICES.TWITCH, payload: 'nytick' },
 ];
 
 const isValidStreamService = streamService => streamService && Object.values(STREAM_SERVICES).includes(streamService.service);
