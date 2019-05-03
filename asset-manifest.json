@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.js": "/static/js/main.a73e1293.chunk.js",
-    "main.js.map": "/static/js/main.a73e1293.chunk.js.map",
+    "main.js": "/static/js/main.da59adda.chunk.js",
+    "main.js.map": "/static/js/main.da59adda.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
     "static/js/2.45cd9486.chunk.js": "/static/js/2.45cd9486.chunk.js",
     "static/js/2.45cd9486.chunk.js.map": "/static/js/2.45cd9486.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.b04ad70761bd40d4324ac8173601f545.js": "/precache-manifest.b04ad70761bd40d4324ac8173601f545.js",
-    "service-worker.js": "/service-worker.js"
+    "precache-manifest.582a83f010891aee671e4b26fa3da216.js": "/precache-manifest.582a83f010891aee671e4b26fa3da216.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/theater-mode.0a76c5c6.svg": "/static/media/theater-mode.0a76c5c6.svg"
   }
 }
