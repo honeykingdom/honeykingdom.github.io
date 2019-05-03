@@ -25,7 +25,10 @@
     "extends": [
       "react-app",
       "airbnb"
-    ]
+    ],
+    "rules": {
+      "react/require-default-props": "off"
+    }
   },
   "browserslist": {
     "production": [
