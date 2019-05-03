@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 
 import Player from './Player';
+import NonoliveMessage from './NonoliveMessage';
 import { STREAM_SERVICES, getChatUrl, getPlayerUrl } from './utils/streamServices';
 import { getPlayerFromUrl, getChatsFromUrl } from './utils/urlParams';
+// import { ReactComponent as FullscreenIcon } from './icons/fullscreen.svg';
 
 document.title = 'HoneyMad';
 
@@ -15,27 +17,44 @@ const GlobalStyle = createGlobalStyle`
     --chat-tabs-height: 26px;
     --chat-witdh: 340px;
   }
+  * {
+    box-sizing: border-box;
+  }
   body {
     margin: 0;
   }
 `;
+
 const Container = styled.div`
   display: flex;
   height: 100vh;
-
-  ${p => p.service === STREAM_SERVICES.NONOLIVE
-    && css`
-      &:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: var(--chat-witdh);
-        bottom: 0;
-        height: 60px;
-        background-color: #313131;
-      }
-    `};
+  font-family: sans-serif;
 `;
+const NonoliveOverflow = styled.div`
+  position: absolute;
+  left: 0;
+  right: var(--chat-witdh);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  height: 60px;
+  background-color: #313131;
+`;
+// const Fullscreen = styled(FullscreenIcon)`
+//   display: inline-flex;
+//   width: 26px;
+//   height: 26px;
+//   margin-left: auto;
+//   cursor: pointer;
+//   color: #fff;
+//   transition-duration: 0.2s;
+//   transition-property: color;
+
+//   &:hover {
+//     color: #e33d3d;
+//   }
+// `;
 const StyledPlayer = styled(Player)`
   position: relative;
   border: none;
@@ -101,6 +120,12 @@ const App = () => {
     <>
       <Container service={player.service}>
         <StyledPlayer src={getPlayerUrl(player)} service={player.service} />
+        {player.service === STREAM_SERVICES.NONOLIVE && (
+          <NonoliveOverflow>
+            <NonoliveMessage />
+            {/* <Fullscreen /> */}
+          </NonoliveOverflow>
+        )}
         <ChatTabs>
           {chats.map(chat => (
             <ChatTab
