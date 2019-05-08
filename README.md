@@ -15,7 +15,7 @@
 | -------- | --------------------- | ----------------- |
 | twitch   | название_канала       | honeymad          |
 | goodgame | goodgame@id_канала \* | goodgame@41677    |
-| nonolive | nonolive@id_комнаты   | nonolive@17349730 |
+| nonolive | nonolive@id_комнаты   | nonolive@18407291 |
 
 \* (id можно узнать в url нажав на "Плеер в окне" или "Чат в окне")
 
@@ -23,6 +23,6 @@
 
 https://honeykingdom.github.io/?player=nytick&chats=honeymad,nytick
 
-https://honeykingdom.github.io/?player=nonolive@17349730&chats=honeymad,nonolive@17349730
+https://honeykingdom.github.io/?player=nonolive@18407291&chats=honeymad,nonolive@18407291
 
 https://honeykingdom.github.io/?player=goodgame@41677&chats=honeymad,goodgame@41677
