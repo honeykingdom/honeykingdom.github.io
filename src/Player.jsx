@@ -13,7 +13,7 @@ const Player = ({ className, src, service }) => {
   }, [service]);
 
   // eslint-disable-next-line jsx-a11y/iframe-has-title
-  return <iframe className={className} src={src} service={service} ref={playerRef} />;
+  return <iframe className={className} src={src} ref={playerRef} />;
 };
 
 Player.propTypes = {
