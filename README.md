@@ -16,7 +16,7 @@
 | twitch   | название_канала       | honeymad          |
 | goodgame | goodgame@id_канала \* | goodgame@41677    |
 | nonolive | nonolive@id_комнаты   | nonolive@18407291 |
-| wasd     | wasd@id_канала        | nonolive@22196    |
+| wasd     | wasd@id_канала        | wasd@22196        |
 
 \* (id можно узнать в url нажав на "Плеер в окне" или "Чат в окне")
 
