@@ -40,8 +40,10 @@ export const getPlayerFromUrl = (urlParam) => {
   };
 };
 
+const addChatUrl = chat => ({ ...chat, url: getChatUrl(chat) });
+
 export const getChatsFromUrl = (urlParam) => {
-  if (!urlParam) return DEFAULT_CHATS;
+  if (!urlParam) return DEFAULT_CHATS.map(addChatUrl);
 
   const chats = urlParam
     .split(CHATS_SEPARATOR)
@@ -50,5 +52,5 @@ export const getChatsFromUrl = (urlParam) => {
 
   const finalChats = chats.length > 0 ? chats : DEFAULT_CHATS;
 
-  return finalChats.map(chat => ({ ...chat, url: getChatUrl(chat) }));
+  return finalChats.map(addChatUrl);
 };
