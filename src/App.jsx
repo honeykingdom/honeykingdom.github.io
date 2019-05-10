@@ -121,7 +121,9 @@ const App = () => {
   const player = getPlayerFromUrl(urlParams.get('player'));
   const chats = getChatsFromUrl(urlParams.get('chats'));
 
-  const [activeChatId, setActiveChatId] = useState(chats[0].id);
+  console.log(chats);
+
+  const [activeChat, setActiveChat] = useState(chats[0].url);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const handleFullscreenClick = () => {
@@ -153,16 +155,16 @@ const App = () => {
         <ChatTabs>
           {chats.map(chat => (
             <ChatTab
-              key={chat.id}
-              active={chat.id === activeChatId}
-              onClick={() => setActiveChatId(chat.id)}
+              key={chat.url}
+              active={chat.url === activeChat}
+              onClick={() => setActiveChat(chat.url)}
             >
               {chat.payload}
             </ChatTab>
           ))}
         </ChatTabs>
         {renderedChats.map(chat => (
-          <Chat key={chat.id} active={chat.id === activeChatId} src={chat.url} />
+          <Chat key={chat.url} active={chat.url === activeChat} src={chat.url} />
         ))}
       </Container>
       <GlobalStyle />
