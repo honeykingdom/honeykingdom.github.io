@@ -3,8 +3,8 @@ import { STREAM_SERVICES, getChatUrl, getPlayerUrl } from './streamServices';
 const CHANNEL_SEPARATOR = '@';
 const CHATS_SEPARATOR = ',';
 
-const DEFAULT_PLAYER = 'honeymad';
-const DEFAULT_CHATS = 'honeymad,nytick';
+const DEFAULT_PLAYER = 'wasd@22196';
+const DEFAULT_CHATS = 'honeymad,wasd@22196';
 
 const isValidStreamService = streamService => streamService && Object.values(STREAM_SERVICES).includes(streamService.service);
 
