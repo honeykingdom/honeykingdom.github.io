@@ -3,54 +3,51 @@ import { STREAM_SERVICES, getChatUrl, getPlayerUrl } from './streamServices';
 const CHANNEL_SEPARATOR = '@';
 const CHATS_SEPARATOR = ',';
 
-const DEFAULT_PLAYER = { service: STREAM_SERVICES.TWITCH, payload: 'honeymad' };
-
-const DEFAULT_CHATS = [
-  { id: 1, service: STREAM_SERVICES.TWITCH, payload: 'honeymad' },
-  { id: 2, service: STREAM_SERVICES.TWITCH, payload: 'nytick' },
-];
+const DEFAULT_PLAYER = 'honeymad';
+const DEFAULT_CHATS = 'honeymad,nytick';
 
 const isValidStreamService = streamService => streamService && Object.values(STREAM_SERVICES).includes(streamService.service);
 
-const getStreamService = (urlParam) => {
+const getStreamService = (urlParam, getUrl) => {
   if (!urlParam) return null;
 
   const streamService = urlParam.split(CHANNEL_SEPARATOR);
 
   if (streamService.length === 1) {
+    const service = STREAM_SERVICES.TWITCH;
     const [payload] = streamService;
-    return { id: urlParam, service: STREAM_SERVICES.TWITCH, payload };
+
+    return {
+      service,
+      payload,
+      url: getUrl({ service, payload }),
+    };
   }
 
   if (streamService.length === 2) {
     const [service, payload] = streamService;
-    return { id: urlParam, service, payload };
+
+    return {
+      service,
+      payload,
+      url: getUrl({ service, payload }),
+    };
   }
 
   return null;
 };
 
 export const getPlayerFromUrl = (urlParam) => {
-  const player = getStreamService(urlParam);
-  const finalPlayer = isValidStreamService(player) ? player : DEFAULT_PLAYER;
+  const player = getStreamService(urlParam, getPlayerUrl);
 
-  return {
-    ...finalPlayer,
-    url: getPlayerUrl(finalPlayer),
-  };
+  return isValidStreamService(player) ? player : getStreamService(DEFAULT_PLAYER, getPlayerUrl);
 };
 
-const addChatUrl = chat => ({ ...chat, url: getChatUrl(chat) });
+const getChats = urlParam => urlParam.split(CHATS_SEPARATOR).map(chat => getStreamService(chat, getChatUrl));
 
 export const getChatsFromUrl = (urlParam) => {
-  if (!urlParam) return DEFAULT_CHATS.map(addChatUrl);
+  const chats = getChats(urlParam || DEFAULT_CHATS);
+  const validChats = chats.filter(chat => chat && isValidStreamService(chat));
 
-  const chats = urlParam
-    .split(CHATS_SEPARATOR)
-    .map(chat => getStreamService(chat))
-    .filter(chat => chat && isValidStreamService(chat));
-
-  const finalChats = chats.length > 0 ? chats : DEFAULT_CHATS;
-
-  return finalChats.map(addChatUrl);
+  return validChats.length > 0 ? validChats : getChats(DEFAULT_CHATS);
 };
