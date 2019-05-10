@@ -3,7 +3,7 @@ import styled, { createGlobalStyle, css } from 'styled-components';
 
 import Player from './Player';
 import NonoliveMessage from './NonoliveMessage';
-import { STREAM_SERVICES, getChatUrl, getPlayerUrl } from './utils/streamServices';
+import { STREAM_SERVICES } from './utils/streamServices';
 import { getPlayerFromUrl, getChatsFromUrl } from './utils/urlParams';
 import { ReactComponent as FullscreenIcon } from './icons/fullscreen.svg';
 
@@ -142,7 +142,7 @@ const App = () => {
   return (
     <>
       <Container service={player.service}>
-        <StyledPlayer src={getPlayerUrl(player)} service={player.service} />
+        <StyledPlayer src={player.url} service={player.service} />
         {player.service === STREAM_SERVICES.WASD && <WasdIconOverflow />}
         {player.service === STREAM_SERVICES.NONOLIVE && (
           <NonoliveOverflow>
@@ -162,7 +162,7 @@ const App = () => {
           ))}
         </ChatTabs>
         {renderedChats.map(chat => (
-          <Chat key={chat.id} active={chat.id === activeChatId} src={getChatUrl(chat)} />
+          <Chat key={chat.id} active={chat.id === activeChatId} src={chat.url} />
         ))}
       </Container>
       <GlobalStyle />

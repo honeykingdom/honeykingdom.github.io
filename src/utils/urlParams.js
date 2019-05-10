@@ -1,4 +1,4 @@
-import { STREAM_SERVICES } from './streamServices';
+import { STREAM_SERVICES, getChatUrl, getPlayerUrl } from './streamServices';
 
 const CHANNEL_SEPARATOR = '@';
 const CHATS_SEPARATOR = ',';
@@ -32,8 +32,12 @@ const getStreamService = (urlParam) => {
 
 export const getPlayerFromUrl = (urlParam) => {
   const player = getStreamService(urlParam);
+  const finalPlayer = isValidStreamService(player) ? player : DEFAULT_PLAYER;
 
-  return isValidStreamService(player) ? player : DEFAULT_PLAYER;
+  return {
+    ...finalPlayer,
+    url: getPlayerUrl(finalPlayer),
+  };
 };
 
 export const getChatsFromUrl = (urlParam) => {
@@ -44,5 +48,7 @@ export const getChatsFromUrl = (urlParam) => {
     .map(chat => getStreamService(chat))
     .filter(chat => chat && isValidStreamService(chat));
 
-  return chats.length > 0 ? chats : DEFAULT_CHATS;
+  const finalChats = chats.length > 0 ? chats : DEFAULT_CHATS;
+
+  return finalChats.map(chat => ({ ...chat, url: getChatUrl(chat) }));
 };
