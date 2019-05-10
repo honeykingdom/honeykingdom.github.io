@@ -7,7 +7,7 @@ import { STREAM_SERVICES, getChatUrl, getPlayerUrl } from './utils/streamService
 import { getPlayerFromUrl, getChatsFromUrl } from './utils/urlParams';
 import { ReactComponent as FullscreenIcon } from './icons/fullscreen.svg';
 
-document.title = 'HoneyMad';
+// document.title = 'HoneyMad';
 
 const GlobalStyle = createGlobalStyle`
   :root {
