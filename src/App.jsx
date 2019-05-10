@@ -74,7 +74,7 @@ const StyledPlayer = styled(Player)`
 
   ${p => p.service === STREAM_SERVICES.WASD
     && css`
-      margin-top: -53px;
+      margin-top: calc(-48px - 2.67px * 2);
       margin-right: 20px;
     `};
 `;
