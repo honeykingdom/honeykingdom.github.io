@@ -1,40 +1,24 @@
 export const STREAM_SERVICES = {
   TWITCH: 'twitch',
-  NONOLIVE: 'nonolive',
   GOODGAME: 'goodgame',
+  NONOLIVE: 'nonolive',
   WASD: 'wasd',
 };
 
-export const getChatUrl = ({ service, payload }) => {
-  switch (service) {
-    case STREAM_SERVICES.TWITCH:
-    default:
-      return `//www.twitch.tv/embed/${payload}/chat?darkpopout`;
-
-    case STREAM_SERVICES.GOODGAME:
-      return `//goodgame.ru/chat/${payload}`;
-
-    case STREAM_SERVICES.NONOLIVE:
-      return `//www.nonolive.com/popout/chat/${payload}`;
-
-    case STREAM_SERVICES.WASD:
-      return `//wasd.tv/chat?channel_id=${payload}`;
-  }
+const chats = {
+  [STREAM_SERVICES.TWITCH]: channel => `//www.twitch.tv/embed/${channel}/chat?darkpopout`,
+  [STREAM_SERVICES.GOODGAME]: id => `//goodgame.ru/chat/${id}`,
+  [STREAM_SERVICES.NONOLIVE]: id => `//www.nonolive.com/popout/chat/${id}`,
+  [STREAM_SERVICES.WASD]: id => `//wasd.tv/chat?channel_id=${id}`,
 };
 
-export const getPlayerUrl = ({ service, payload }) => {
-  switch (service) {
-    case STREAM_SERVICES.TWITCH:
-    default:
-      return `//player.twitch.tv/?channel=${payload}`;
-
-    case STREAM_SERVICES.GOODGAME:
-      return `//goodgame.ru/player?${payload}`;
-
-    case STREAM_SERVICES.NONOLIVE:
-      return `//www.nonolive.com/room/${payload}`;
-
-    case STREAM_SERVICES.WASD:
-      return `//wasd.tv/channel/${payload}/main`;
-  }
+const players = {
+  [STREAM_SERVICES.TWITCH]: channel => `//player.twitch.tv/?channel=${channel}`,
+  [STREAM_SERVICES.GOODGAME]: id => `//goodgame.ru/player?${id}`,
+  [STREAM_SERVICES.NONOLIVE]: id => `//www.nonolive.com/room/${id}`,
+  [STREAM_SERVICES.WASD]: id => `//wasd.tv/channel/${id}/main`,
 };
+
+export const getChatUrl = ({ service, payload }) => chats[service](payload);
+
+export const getPlayerUrl = ({ service, payload }) => players[service](payload);
