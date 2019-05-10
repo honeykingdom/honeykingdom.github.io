@@ -121,8 +121,6 @@ const App = () => {
   const player = getPlayerFromUrl(urlParams.get('player'));
   const chats = getChatsFromUrl(urlParams.get('chats'));
 
-  console.log(chats);
-
   const [activeChat, setActiveChat] = useState(chats[0].url);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
