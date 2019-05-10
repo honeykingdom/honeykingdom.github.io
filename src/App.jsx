@@ -40,6 +40,13 @@ const NonoliveOverflow = styled.div`
   height: 60px;
   background-color: #313131;
 `;
+const WasdIconOverflow = styled.div`
+  position: absolute;
+  top: 2px;
+  right: var(--chat-witdh);
+  width: 32px;
+  height: 28px;
+`;
 const Fullscreen = styled(FullscreenIcon)`
   display: inline-flex;
   width: 26px;
@@ -63,6 +70,12 @@ const StyledPlayer = styled(Player)`
   ${p => p.service === STREAM_SERVICES.NONOLIVE
     && css`
       margin-right: 0;
+    `};
+
+  ${p => p.service === STREAM_SERVICES.WASD
+    && css`
+      margin-top: -53px;
+      margin-right: 20px;
     `};
 `;
 const ChatTabs = styled.div`
@@ -130,6 +143,7 @@ const App = () => {
     <>
       <Container service={player.service}>
         <StyledPlayer src={getPlayerUrl(player)} service={player.service} />
+        {player.service === STREAM_SERVICES.WASD && <WasdIconOverflow />}
         {player.service === STREAM_SERVICES.NONOLIVE && (
           <NonoliveOverflow>
             <NonoliveMessage />
