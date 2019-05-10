@@ -19,7 +19,7 @@ const Player = ({ className, src, service }) => {
 Player.propTypes = {
   className: pt.string,
   src: pt.string.isRequired,
-  service: pt.string.isRequired,
+  service: pt.oneOf(Object.values(STREAM_SERVICES)).isRequired,
 };
 
 export default Player;
