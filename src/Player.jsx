@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import pt from 'prop-types';
 
-import { STREAM_SERVICES } from './utils/streamServices';
+import { STREAM_SERVICES } from './utils/constants';
 
 const Player = ({ className, src, service }) => {
   const playerRef = useRef(null);

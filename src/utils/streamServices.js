@@ -1,9 +1,4 @@
-export const STREAM_SERVICES = {
-  TWITCH: 'twitch',
-  GOODGAME: 'goodgame',
-  NONOLIVE: 'nonolive',
-  WASD: 'wasd',
-};
+import { STREAM_SERVICES } from './constants';
 
 const chats = {
   [STREAM_SERVICES.TWITCH]: channel => `//www.twitch.tv/embed/${channel}/chat?darkpopout`,
