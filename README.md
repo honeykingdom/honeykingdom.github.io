@@ -2,10 +2,10 @@
 
 Плеер и чат с разных каналов
 
-https://honeykingdom.github.io/#nytick
-https://honeykingdom.github.io/#gg
-https://honeykingdom.github.io/#nonolive
-https://honeykingdom.github.io/#wasd
+- https://honeykingdom.github.io/#nytick
+- https://honeykingdom.github.io/#gg
+- https://honeykingdom.github.io/#nonolive
+- https://honeykingdom.github.io/#wasd
 
 ### Параметры
 
