@@ -2,6 +2,11 @@
 
 Плеер и чат с разных каналов
 
+https://honeykingdom.github.io/#nytick
+https://honeykingdom.github.io/#gg
+https://honeykingdom.github.io/#nonolive
+https://honeykingdom.github.io/#wasd
+
 ### Параметры
 
 | параметр | описание                       | пример                        |
@@ -24,8 +29,8 @@
 
 https://honeykingdom.github.io/?player=nytick&chats=honeymad,nytick
 
-https://honeykingdom.github.io/?player=nonolive@18407291&chats=honeymad,nonolive@18407291
-
 https://honeykingdom.github.io/?player=goodgame@41677&chats=honeymad,goodgame@41677
+
+https://honeykingdom.github.io/?player=nonolive@18407291&chats=honeymad,nonolive@18407291
 
 https://honeykingdom.github.io/?player=wasd@22196&chats=honeymad,wasd@22196
