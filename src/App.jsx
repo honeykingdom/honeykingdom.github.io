@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 
 import Player from './Player';
 import NonoliveMessage from './NonoliveMessage';
-import { STREAM_SERVICES } from './utils/streamServices';
+import { STREAM_SERVICES, PRESETS } from './utils/constants';
 import { getPlayerFromUrl, getChatsFromUrl } from './utils/urlParams';
 import { ReactComponent as FullscreenIcon } from './icons/fullscreen.svg';
 
@@ -116,13 +116,40 @@ const Chat = styled.iframe`
   background-color: #fff;
 `;
 
+const getPresetFromHash = () => window.location.hash.slice(1);
+const isPresetValid = preset => preset && Object.keys(PRESETS).includes(preset);
+
+const getInitialHash = () => {
+  const preset = getPresetFromHash();
+  return isPresetValid(preset) ? preset : '';
+};
+
 const App = () => {
+  const [preset, setPreset] = useState(getInitialHash);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = getPresetFromHash();
+      if (isPresetValid(hash)) {
+        setPreset(hash);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [setPreset]);
+
   const urlParams = new URLSearchParams(window.location.search);
-  const player = getPlayerFromUrl(urlParams.get('player'));
-  const chats = getChatsFromUrl(urlParams.get('chats'));
+
+  const playerParam = preset ? PRESETS[preset].player : urlParams.get('player');
+  const chatsParam = preset ? PRESETS[preset].chats : urlParams.get('chats');
+
+  const player = getPlayerFromUrl(playerParam);
+  const chats = getChatsFromUrl(chatsParam);
 
   const [activeChat, setActiveChat] = useState(chats[0].url);
-  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const handleFullscreenClick = () => {
     if (isFullscreen && document.fullscreenElement) {
