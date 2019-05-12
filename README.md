@@ -6,6 +6,7 @@
 - https://honeykingdom.github.io/#gg
 - https://honeykingdom.github.io/#nonolive
 - https://honeykingdom.github.io/#wasd
+- https://honeykingdom.github.io/#youtube=dQw4w9WgXcQ
 
 ### Параметры
 
@@ -16,12 +17,13 @@
 
 ### Формат для каналов
 
-| сервис   | формат                | пример            |
-| -------- | --------------------- | ----------------- |
-| twitch   | название_канала       | honeymad          |
-| goodgame | goodgame@id_канала \* | goodgame@41677    |
-| nonolive | nonolive@id_комнаты   | nonolive@18407291 |
-| wasd     | wasd@id_канала        | wasd@22196        |
+| сервис   | формат                | пример              |
+| -------- | --------------------- | ------------------- |
+| twitch   | название_канала       | honeymad            |
+| youtube  | youtube@id_видео      | youtube@dQw4w9WgXcQ |
+| goodgame | goodgame@id_канала \* | goodgame@41677      |
+| nonolive | nonolive@id_комнаты   | nonolive@18407291   |
+| wasd     | wasd@id_канала        | wasd@22196          |
 
 \* (id можно узнать в url нажав на "Плеер в окне" или "Чат в окне")
 
