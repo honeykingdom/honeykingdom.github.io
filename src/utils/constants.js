@@ -1,9 +1,9 @@
 export const STREAM_SERVICES = {
   TWITCH: 'twitch',
+  YOUTUBE: 'youtube',
   GOODGAME: 'goodgame',
   NONOLIVE: 'nonolive',
   WASD: 'wasd',
-  // YOUTUBE: 'youtube',
 };
 
 export const PRESETS = {
@@ -22,5 +22,9 @@ export const PRESETS = {
   wasd: {
     player: 'wasd@22196',
     chats: 'honeymad,wasd@22196',
+  },
+  youtube: {
+    player: id => `youtube@${id}`,
+    chats: id => `honeymad,youtube@${id}`,
   },
 };
