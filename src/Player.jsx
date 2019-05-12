@@ -7,8 +7,12 @@ const Player = ({ className, src, service }) => {
   const playerRef = useRef(null);
 
   useLayoutEffect(() => {
-    if (playerRef.current && service === STREAM_SERVICES.TWITCH) {
+    if (
+      playerRef.current
+      && (service === STREAM_SERVICES.TWITCH || service === STREAM_SERVICES.YOUTUBE)
+    ) {
       playerRef.current.setAttribute('allowfullscreen', 'true');
+      playerRef.current.setAttribute('allow', 'autoplay');
     }
   }, [service]);
 
