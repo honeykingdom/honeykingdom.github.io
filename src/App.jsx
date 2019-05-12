@@ -116,40 +116,67 @@ const Chat = styled.iframe`
   background-color: #fff;
 `;
 
-const getPresetFromHash = () => window.location.hash.slice(1);
-const isPresetValid = preset => preset && Object.keys(PRESETS).includes(preset);
+const YOUTUBE_PRESET_REGEX = /^(youtube)=([a-zA-Z0-9_-]{11})$/;
+
+const getPresetFromHash = () => {
+  const hash = window.location.hash.slice(1);
+  const m = YOUTUBE_PRESET_REGEX.exec(hash);
+
+  if (m !== null) {
+    const [, value, payload] = m;
+    return { value, payload };
+  }
+
+  return { value: hash };
+};
+
+const isPresetValid = preset => preset && Object.keys(PRESETS).includes(preset.value);
 
 const getInitialHash = () => {
   const preset = getPresetFromHash();
-  return isPresetValid(preset) ? preset : '';
+  return isPresetValid(preset) ? preset : null;
+};
+
+const getFrames = (preset) => {
+  let playerParam;
+  let chatsParam;
+
+  if (preset) {
+    const { value, payload } = preset;
+    const { player: presetPlayer, chats: presetChats } = PRESETS[value];
+
+    playerParam = typeof presetPlayer === 'function' ? presetPlayer(payload) : presetPlayer;
+    chatsParam = typeof presetChats === 'function' ? presetChats(payload) : presetChats;
+  } else {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    playerParam = urlParams.get('player');
+    chatsParam = urlParams.get('chats');
+  }
+
+  return {
+    player: getPlayerFromUrl(playerParam),
+    chats: getChatsFromUrl(chatsParam),
+  };
 };
 
 const App = () => {
   const [preset, setPreset] = useState(getInitialHash);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  const { player, chats } = getFrames(preset);
+  const [activeChat, setActiveChat] = useState(chats[0].url);
+
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = getPresetFromHash();
-      if (isPresetValid(hash)) {
-        setPreset(hash);
-      }
+      const newPreset = getPresetFromHash();
+      if (isPresetValid(newPreset)) setPreset(newPreset);
     };
 
     window.addEventListener('hashchange', handleHashChange);
 
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [setPreset]);
-
-  const urlParams = new URLSearchParams(window.location.search);
-
-  const playerParam = preset ? PRESETS[preset].player : urlParams.get('player');
-  const chatsParam = preset ? PRESETS[preset].chats : urlParams.get('chats');
-
-  const player = getPlayerFromUrl(playerParam);
-  const chats = getChatsFromUrl(chatsParam);
-
-  const [activeChat, setActiveChat] = useState(chats[0].url);
 
   const handleFullscreenClick = () => {
     if (isFullscreen && document.fullscreenElement) {
