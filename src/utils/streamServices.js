@@ -13,7 +13,7 @@ const players = {
   [STREAM_SERVICES.YOUTUBE]: id => `//www.youtube.com/embed/${id}?autoplay=1`,
   [STREAM_SERVICES.GOODGAME]: id => `//goodgame.ru/player?${id}`,
   [STREAM_SERVICES.NONOLIVE]: id => `//www.nonolive.com/room/${id}`,
-  [STREAM_SERVICES.WASD]: id => `//wasd.tv/channel/${id}/main`,
+  [STREAM_SERVICES.WASD]: id => `//wasd.tv/channel/${id}/`,
 };
 
 export const getChatUrl = ({ service, payload }) => chats[service](payload);
