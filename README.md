@@ -8,6 +8,16 @@
 - https://honeykingdom.github.io/#wasd
 - https://honeykingdom.github.io/#youtube=dQw4w9WgXcQ
 
+### Goodgame
+
+- https://honeykingdom.github.io/#gg-lasqa
+- https://honeykingdom.github.io/#gg-segall
+- https://honeykingdom.github.io/#gg-arrowwoods
+- https://honeykingdom.github.io/#gg-melharucos
+- https://honeykingdom.github.io/#gg-liz0n
+- https://honeykingdom.github.io/#gg-roadhouse
+- https://honeykingdom.github.io/#gg-zanuda
+
 ### Параметры
 
 | параметр | описание                       | пример                        |
