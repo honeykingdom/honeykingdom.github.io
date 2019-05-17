@@ -167,6 +167,9 @@ const App = () => {
   const { player, chats } = getFrames(preset);
   const [activeChat, setActiveChat] = useState(chats[0].url);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => setActiveChat(chats[0].url), [preset]);
+
   useEffect(() => {
     const handleHashChange = () => {
       const newPreset = getPresetFromHash();
