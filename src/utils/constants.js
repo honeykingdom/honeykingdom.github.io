@@ -51,6 +51,14 @@ export const PRESETS = {
     player: 'wasd@22196',
     chats: 'honeymad,wasd@22196',
   },
+  'wasd-cake': {
+    player: 'wasd@40656',
+    chats: 'c_a_k_e,wasd@40656',
+  },
+  'wasd-zanuda': {
+    player: 'wasd@20402',
+    chats: 'zanuda,wasd@20402',
+  },
   youtube: {
     player: id => `youtube@${id}`,
     chats: id => `honeymad,youtube@${id}`,
