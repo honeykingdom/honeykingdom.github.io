@@ -47,7 +47,7 @@ const NonoliveOverflow = styled.div`
 `;
 const WasdIconOverflow = styled.div`
   position: absolute;
-  top: 2px;
+  top: 6px;
   right: var(--chat-witdh);
   width: 32px;
   height: 28px;
