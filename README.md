@@ -7,6 +7,7 @@
 - https://honeykingdom.github.io/#nonolive
 - https://honeykingdom.github.io/#wasd
 - https://honeykingdom.github.io/#youtube=dQw4w9WgXcQ
+- https://honeykingdom.github.io/#mixer
 
 ### Goodgame
 
@@ -39,6 +40,7 @@
 | goodgame | goodgame@id_канала \* | goodgame@41677      |
 | nonolive | nonolive@id_комнаты   | nonolive@18407291   |
 | wasd     | wasd@id_канала        | wasd@22196          |
+| mixer    | mixer@название_канала | mixer@JoaquinPanis  |
 
 \* (id можно узнать в url нажав на "Плеер в окне" или "Чат в окне")
 
