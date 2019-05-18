@@ -6,6 +6,7 @@ const chats = {
   [STREAM_SERVICES.GOODGAME]: id => `//goodgame.ru/chat/${id}`,
   [STREAM_SERVICES.NONOLIVE]: id => `//www.nonolive.com/popout/chat/${id}`,
   [STREAM_SERVICES.WASD]: id => `//wasd.tv/chat?channel_id=${id}`,
+  [STREAM_SERVICES.MIXER]: channel => `//mixer.com/embed/chat/${channel}`,
 };
 
 const players = {
@@ -14,6 +15,7 @@ const players = {
   [STREAM_SERVICES.GOODGAME]: id => `//goodgame.ru/player?${id}`,
   [STREAM_SERVICES.NONOLIVE]: id => `//www.nonolive.com/room/${id}`,
   [STREAM_SERVICES.WASD]: id => `//wasd.tv/channel/${id}`,
+  [STREAM_SERVICES.MIXER]: channel => `//mixer.com/embed/player/${channel}`,
 };
 
 export const getChatUrl = ({ service, payload }) => chats[service](payload);

@@ -4,6 +4,7 @@ export const STREAM_SERVICES = {
   GOODGAME: 'goodgame',
   NONOLIVE: 'nonolive',
   WASD: 'wasd',
+  MIXER: 'mixer',
 };
 
 export const PRESETS = {
@@ -62,5 +63,9 @@ export const PRESETS = {
   youtube: {
     player: id => `youtube@${id}`,
     chats: id => `honeymad,youtube@${id}`,
+  },
+  mixer: {
+    player: 'mixer@JoaquinPanis',
+    chats: 'honeymad,mixer@JoaquinPanis',
   },
 };
