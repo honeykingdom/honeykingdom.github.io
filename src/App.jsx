@@ -4,10 +4,8 @@ import styled, { createGlobalStyle, css } from 'styled-components';
 import Player from './Player';
 import NonoliveMessage from './NonoliveMessage';
 import { STREAM_SERVICES, PRESETS } from './utils/constants';
+import useIsMobile from './hooks/useIsMobile';
 import { getPlayerFromUrl, getChatsFromUrl } from './utils/urlParams';
-import { ReactComponent as FullscreenIcon } from './icons/fullscreen.svg';
-
-// document.title = 'HoneyMad';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -26,8 +24,15 @@ const GlobalStyle = createGlobalStyle`
 `;
 const Container = styled.div`
   display: flex;
+  align-items: flex-start;
   height: 100vh;
   font-family: sans-serif;
+
+  ${p => p.isMobile
+    && css`
+      flex-direction: column;
+      align-items: stretch;
+    `}
 `;
 const NonoliveOverflow = styled.div`
   position: absolute;
@@ -47,44 +52,60 @@ const WasdIconOverflow = styled.div`
   width: 32px;
   height: 28px;
 `;
-const Fullscreen = styled(FullscreenIcon)`
-  display: inline-flex;
-  width: 26px;
-  height: 26px;
-  margin-left: auto;
-  cursor: pointer;
-  color: #fff;
-  transition-duration: 0.2s;
-  transition-property: color;
-
-  &:hover {
-    color: #e33d3d;
-  }
-`;
-const StyledPlayer = styled(Player)`
+const PlayerWrapper = styled.div`
   position: relative;
-  border: none;
-  width: 100%;
-  margin-right: var(--chat-witdh);
+  flex-grow: 1;
+  height: 100%;
 
   ${p => p.service === STREAM_SERVICES.NONOLIVE
     && css`
-      margin-right: 0;
+      margin-right: calc(-1 * var(--chat-witdh));
     `};
 
   ${p => p.service === STREAM_SERVICES.WASD
     && css`
-      margin-top: calc(-48px - 2.67px * 2);
-      margin-right: 20px;
+      --wasd-offset-top: 48px;
+
+      height: calc(100% + var(--wasd-offset-top));
+      margin-top: calc(-1 * var(--wasd-offset-top));
+      margin-right: -320px;
     `};
+
+  ${p => p.isMobile
+    && css`
+      height: auto;
+      flex-grow: 0;
+      flex-shrink: 0;
+
+      &:after {
+        display: block;
+        content: '';
+        padding-top: 56.25%;
+      }
+    `}
 `;
-const ChatTabs = styled.div`
+const StyledPlayer = styled(Player)`
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+`;
+const ChatsWrapper = styled.div`
+  position: relative;
+  flex-shrink: 0;
+  width: var(--chat-witdh);
+
+  ${p => p.isMobile
+    && css`
+      width: 100%;
+      flex-grow: 1;
+    `}
+`;
+const ChatTabs = styled.div`
   display: flex;
   height: var(--chat-tabs-height);
-  width: var(--chat-witdh);
   border-bottom: 1px solid var(--color-violet);
 `;
 const ChatTab = styled.div`
@@ -106,14 +127,16 @@ const ChatTab = styled.div`
   }
 `;
 const Chat = styled.iframe`
-  position: absolute;
-  top: var(--chat-tabs-height);
-  right: 0;
   display: ${p => (p.active ? 'block' : 'none')};
-  width: var(--chat-witdh);
-  height: calc(100% - var(--chat-tabs-height));
+  width: 100%;
+  height: calc(100vh - var(--chat-tabs-height));
   border: none;
   background-color: #fff;
+
+  ${p => p.isMobile
+    && css`
+      height: calc(100% - var(--chat-tabs-height));
+    `}
 `;
 
 const YOUTUBE_PRESET_REGEX = /^(youtube)=([a-zA-Z0-9_-]{11})$/;
@@ -162,10 +185,12 @@ const getFrames = (preset) => {
 
 const App = () => {
   const [preset, setPreset] = useState(getInitialHash);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
   const { player, chats } = getFrames(preset);
   const [activeChat, setActiveChat] = useState(chats[0].url);
+  const isMobileSize = useIsMobile();
+  const isMobile = isMobileSize
+    && player.service !== STREAM_SERVICES.WASD
+    && player.service !== STREAM_SERVICES.NONOLIVE;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => setActiveChat(chats[0].url), [preset]);
@@ -181,16 +206,6 @@ const App = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [setPreset]);
 
-  const handleFullscreenClick = () => {
-    if (isFullscreen && document.fullscreenElement) {
-      setIsFullscreen(false);
-      document.exitFullscreen();
-    } else {
-      setIsFullscreen(true);
-      document.documentElement.requestFullscreen();
-    }
-  };
-
   // Убираем чат nonolive если он совпадает с каналом плеера
   const renderedChats = chats.filter(
     chat => !(chat.service === STREAM_SERVICES.NONOLIVE && chat.payload === player.payload),
@@ -198,29 +213,37 @@ const App = () => {
 
   return (
     <>
-      <Container service={player.service}>
-        <StyledPlayer src={player.url} service={player.service} />
+      <Container service={player.service} isMobile={isMobile}>
+        <PlayerWrapper service={player.service} isMobile={isMobile}>
+          <StyledPlayer src={player.url} />
+        </PlayerWrapper>
         {player.service === STREAM_SERVICES.WASD && <WasdIconOverflow />}
         {player.service === STREAM_SERVICES.NONOLIVE && (
           <NonoliveOverflow>
             <NonoliveMessage />
-            <Fullscreen onClick={handleFullscreenClick} />
           </NonoliveOverflow>
         )}
-        <ChatTabs>
-          {chats.map(chat => (
-            <ChatTab
+        <ChatsWrapper isMobile={isMobile}>
+          <ChatTabs>
+            {chats.map(chat => (
+              <ChatTab
+                key={chat.url}
+                active={chat.url === activeChat}
+                onClick={() => setActiveChat(chat.url)}
+              >
+                {chat.payload}
+              </ChatTab>
+            ))}
+          </ChatTabs>
+          {renderedChats.map(chat => (
+            <Chat
               key={chat.url}
               active={chat.url === activeChat}
-              onClick={() => setActiveChat(chat.url)}
-            >
-              {chat.payload}
-            </ChatTab>
+              src={chat.url}
+              isMobile={isMobile}
+            />
           ))}
-        </ChatTabs>
-        {renderedChats.map(chat => (
-          <Chat key={chat.url} active={chat.url === activeChat} src={chat.url} />
-        ))}
+        </ChatsWrapper>
       </Container>
       <GlobalStyle />
     </>
