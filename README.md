@@ -1,4 +1,4 @@
-## HoneyKingdom
+# HoneyKingdom
 
 Плеер и чат с разных каналов
 
@@ -18,14 +18,19 @@
 - https://honeykingdom.github.io/#gg-roadhouse
 - https://honeykingdom.github.io/#gg-zanuda
 
-### Параметры
+### Wasd
+
+- https://honeykingdom.github.io/#wasd-cake
+- https://honeykingdom.github.io/#wasd-zanuda
+
+## Параметры
 
 | параметр | описание                       | пример                        |
 | -------- | ------------------------------ | ----------------------------- |
 | player   | плеер                          | player=honeymad               |
 | chats    | список чатов через запятую `,` | chats=honeymad,goodgame@41677 |
 
-### Формат для каналов
+## Формат для каналов
 
 | сервис   | формат                | пример              |
 | -------- | --------------------- | ------------------- |
@@ -37,7 +42,7 @@
 
 \* (id можно узнать в url нажав на "Плеер в окне" или "Чат в окне")
 
-### Примеры
+## Примеры
 
 https://honeykingdom.github.io/?player=nytick&chats=honeymad,nytick
 
