@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.fa933d68.chunk.js",
-    "main.js.map": "/static/js/main.fa933d68.chunk.js.map",
+    "main.js": "/static/js/main.b98b0bae.chunk.js",
+    "main.js.map": "/static/js/main.b98b0bae.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.d38d22aa.chunk.js": "/static/js/2.d38d22aa.chunk.js",
-    "static/js/2.d38d22aa.chunk.js.map": "/static/js/2.d38d22aa.chunk.js.map",
+    "static/js/2.c056ee7e.chunk.js": "/static/js/2.c056ee7e.chunk.js",
+    "static/js/2.c056ee7e.chunk.js.map": "/static/js/2.c056ee7e.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.352413b792c711e7f8bc17658d4c4b46.js": "/precache-manifest.352413b792c711e7f8bc17658d4c4b46.js",
+    "precache-manifest.8fd243ff22ee65536480ab5dc363d16b.js": "/precache-manifest.8fd243ff22ee65536480ab5dc363d16b.js",
     "service-worker.js": "/service-worker.js",
     "static/media/theater-mode.0a76c5c6.svg": "/static/media/theater-mode.0a76c5c6.svg"
   }
