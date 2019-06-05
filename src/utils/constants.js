@@ -46,11 +46,11 @@ export const PRESETS = {
   },
   nonolive: {
     player: 'nonolive@18407291',
-    chats: 'goodgame@41677,nonolive@18407291',
+    chats: 'honeymad,nonolive@18407291',
   },
   wasd: {
     player: 'wasd@22196',
-    chats: 'goodgame@41677,wasd@22196',
+    chats: 'honeymad,wasd@22196',
   },
   'wasd-cake': {
     player: 'wasd@40656',
@@ -62,10 +62,10 @@ export const PRESETS = {
   },
   youtube: {
     player: id => `youtube@${id}`,
-    chats: id => `goodgame@41677,youtube@${id}`,
+    chats: id => `honeymad,youtube@${id}`,
   },
   mixer: {
     player: 'mixer@JoaquinPanis',
-    chats: 'goodgame@41677,mixer@JoaquinPanis',
+    chats: 'honeymad,mixer@JoaquinPanis',
   },
 };
