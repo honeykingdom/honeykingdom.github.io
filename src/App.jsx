@@ -28,7 +28,7 @@ const Container = styled.div`
   height: 100vh;
   font-family: sans-serif;
 
-  ${p => p.isMobile
+  ${(p) => p.isMobile
     && css`
       flex-direction: column;
       align-items: stretch;
@@ -57,12 +57,12 @@ const PlayerWrapper = styled.div`
   flex-grow: 1;
   height: 100%;
 
-  ${p => p.service === STREAM_SERVICES.NONOLIVE
+  ${(p) => p.service === STREAM_SERVICES.NONOLIVE
     && css`
       margin-right: calc(-1 * var(--chat-witdh));
     `};
 
-  ${p => p.service === STREAM_SERVICES.WASD
+  ${(p) => p.service === STREAM_SERVICES.WASD
     && css`
       --wasd-offset-top: 48px;
 
@@ -71,7 +71,7 @@ const PlayerWrapper = styled.div`
       margin-right: -320px;
     `};
 
-  ${p => p.isMobile
+  ${(p) => p.isMobile
     && css`
       height: auto;
       flex-grow: 0;
@@ -97,7 +97,7 @@ const ChatsWrapper = styled.div`
   flex-shrink: 0;
   width: var(--chat-witdh);
 
-  ${p => p.isMobile
+  ${(p) => p.isMobile
     && css`
       width: 100%;
       flex-grow: 1;
@@ -111,8 +111,8 @@ const ChatTabs = styled.div`
 const ChatTab = styled.div`
   flex-grow: 1;
   flex-basis: 0;
-  color: ${p => (p.active ? '#d3d3d3' : '#898395')};
-  background-color: var(${p => (p.active ? '--color-violet-dark' : '--color-black')});
+  color: ${(p) => (p.active ? '#d3d3d3' : '#898395')};
+  background-color: var(${(p) => (p.active ? '--color-violet-dark' : '--color-black')});
   font-family: sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -127,13 +127,13 @@ const ChatTab = styled.div`
   }
 `;
 const Chat = styled.iframe`
-  display: ${p => (p.active ? 'block' : 'none')};
+  display: ${(p) => (p.active ? 'block' : 'none')};
   width: 100%;
   height: calc(100vh - var(--chat-tabs-height));
   border: none;
   background-color: #fff;
 
-  ${p => p.isMobile
+  ${(p) => p.isMobile
     && css`
       height: calc(100% - var(--chat-tabs-height));
     `}
@@ -153,7 +153,7 @@ const getPresetFromHash = () => {
   return { value: hash };
 };
 
-const isPresetValid = preset => preset && Object.keys(PRESETS).includes(preset.value);
+const isPresetValid = (preset) => preset && Object.keys(PRESETS).includes(preset.value);
 
 const getInitialHash = () => {
   const preset = getPresetFromHash();
@@ -208,7 +208,7 @@ const App = () => {
 
   // Убираем чат nonolive если он совпадает с каналом плеера
   const renderedChats = chats.filter(
-    chat => !(chat.service === STREAM_SERVICES.NONOLIVE && chat.payload === player.payload),
+    (chat) => !(chat.service === STREAM_SERVICES.NONOLIVE && chat.payload === player.payload),
   );
 
   return (
@@ -225,7 +225,7 @@ const App = () => {
         )}
         <ChatsWrapper isMobile={isMobile}>
           <ChatTabs>
-            {chats.map(chat => (
+            {chats.map((chat) => (
               <ChatTab
                 key={chat.url}
                 active={chat.url === activeChat}
@@ -235,7 +235,7 @@ const App = () => {
               </ChatTab>
             ))}
           </ChatTabs>
-          {renderedChats.map(chat => (
+          {renderedChats.map((chat) => (
             <Chat
               key={chat.url}
               active={chat.url === activeChat}
