@@ -29,8 +29,8 @@ export const PRESETS = {
     chats: 'arrowwoods,goodgame@137757',
   },
   'gg-melharucos': {
-    player: 'goodgame@25432',
-    chats: 'melharucos,goodgame@25432',
+    player: 'goodgame@171713',
+    chats: 'melharucos,goodgame@171713',
   },
   'gg-liz0n': {
     player: 'goodgame@79564',
@@ -61,8 +61,8 @@ export const PRESETS = {
     chats: 'zanuda,wasd@20402',
   },
   youtube: {
-    player: id => `youtube@${id}`,
-    chats: id => `honeymad,youtube@${id}`,
+    player: (id) => `youtube@${id}`,
+    chats: (id) => `honeymad,youtube@${id}`,
   },
   mixer: {
     player: 'mixer@JoaquinPanis',
