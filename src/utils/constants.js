@@ -60,6 +60,10 @@ export const PRESETS = {
     player: 'wasd@20402',
     chats: 'zanuda,wasd@20402',
   },
+  'wasd-lasqa': {
+    player: 'wasd@164328',
+    chats: 'lasqa,goodgame@99600,wasd@164328',
+  },
   youtube: {
     player: (id) => `youtube@${id}`,
     chats: (id) => `honeymad,youtube@${id}`,
