@@ -6,7 +6,7 @@ const CHATS_SEPARATOR = ',';
 
 const { player: DEFAULT_PLAYER, chats: DEFAULT_CHATS } = PRESETS.wasd;
 
-const isValidStreamService = streamService => streamService && Object.values(STREAM_SERVICES).includes(streamService.service);
+const isValidStreamService = (streamService) => streamService && Object.values(STREAM_SERVICES).includes(streamService.service);
 
 const getStreamService = (urlParam, getUrl) => {
   if (!urlParam) return null;
@@ -43,11 +43,11 @@ export const getPlayerFromUrl = (urlParam) => {
   return isValidStreamService(player) ? player : getStreamService(DEFAULT_PLAYER, getPlayerUrl);
 };
 
-const getChats = urlParam => urlParam.split(CHATS_SEPARATOR).map(chat => getStreamService(chat, getChatUrl));
+const getChats = (urlParam) => urlParam.split(CHATS_SEPARATOR).map((chat) => getStreamService(chat, getChatUrl));
 
 export const getChatsFromUrl = (urlParam) => {
   const chats = getChats(urlParam || DEFAULT_CHATS);
-  const validChats = chats.filter(chat => chat && isValidStreamService(chat));
+  const validChats = chats.filter((chat) => chat && isValidStreamService(chat));
 
   return validChats.length > 0 ? validChats : getChats(DEFAULT_CHATS);
 };
