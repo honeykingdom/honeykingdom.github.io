@@ -1,6 +1,6 @@
 import { getPlayerUrl, getChatUrl } from "./streamServices";
-import { StreamService, Frame, PresetText } from "./types";
-import { PRESETS } from "./constants";
+import { Frame, PresetText } from "./types";
+import { StreamService, PRESETS } from "./constants";
 
 const YOUTUBE_PRESET_REGEX = /^(youtube)=([a-zA-Z0-9_-]{11})$/;
 

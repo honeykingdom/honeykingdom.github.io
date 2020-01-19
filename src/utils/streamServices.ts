@@ -1,4 +1,4 @@
-import { StreamService } from "./types";
+import { StreamService } from "./constants";
 
 // prettier-ignore
 const chats = {

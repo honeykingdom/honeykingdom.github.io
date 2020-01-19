@@ -1,6 +1,13 @@
 import { Preset } from "./types";
 
-// eslint-disable-next-line import/prefer-default-export
+export enum StreamService {
+  twitch = "twitch",
+  youtube = "youtube",
+  goodgame = "goodgame",
+  wasd = "wasd",
+  mixer = "mixer"
+}
+
 export const PRESETS: Record<string, Preset> = {
   nytick: {
     player: "nytick",

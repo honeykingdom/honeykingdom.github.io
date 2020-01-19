@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle, css } from "styled-components";
 
 import Player from "./Player";
-import { StreamService, Frame } from "./utils/types";
+import { StreamService } from "./utils/constants";
+import { Frame } from "./utils/types";
 import getChatTabTitle from "./utils/getChatTabTitle";
 import usePlayerAndChat from "./hooks/usePlayerAndChat";
 import useIsMobile from "./hooks/useIsMobile";
@@ -42,7 +43,10 @@ const WasdIconOverflow = styled.div`
   width: 32px;
   height: 28px;
 `;
-const PlayerWrapper = styled.div<{ service: StreamService; isMobile: boolean }>`
+const PlayerWrapper = styled.div<{
+  service: StreamService;
+  isMobile: boolean;
+}>`
   position: relative;
   flex-grow: 1;
   height: 100%;

@@ -1,11 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export enum StreamService {
-  twitch = "twitch",
-  youtube = "youtube",
-  goodgame = "goodgame",
-  wasd = "wasd",
-  mixer = "mixer"
-}
+import { StreamService } from "./constants";
 
 type MakePresetField = (id: string) => string;
 

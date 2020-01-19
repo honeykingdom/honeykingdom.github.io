@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import { getPlayerUrl, getChatUrl } from "./streamServices";
 import getPlayerAndChat, { getFrame, DEFAULT_PRESET } from "./getPlayerAndChat";
-import { PRESETS } from "./constants";
-import { PresetText, PresetFunction, StreamService } from "./types";
+import { PRESETS, StreamService } from "./constants";
+import { PresetText, PresetFunction } from "./types";
 
 const {
   player: DEFAULT_PLAYER,
