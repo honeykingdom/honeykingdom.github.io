@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://honeykingdom.github.io",
   "dependencies": {
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
@@ -12,8 +11,29 @@
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^8.0.3",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^13.1.8",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/styled-components": "^4.4.2",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
-    "gh-pages": "^2.2.0"
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "gh-pages": "^2.2.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.3.0",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "~3.7.2"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -24,12 +44,28 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
     "extends": [
-      "react-app",
-      "airbnb"
+      "airbnb",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/react",
+      "prettier/@typescript-eslint"
     ],
+    "plugins": [
+      "prettier",
+      "react-hooks",
+      "@typescript-eslint"
+    ],
+    "globals": {
+      "window": true,
+      "document": true
+    },
     "rules": {
-      "react/require-default-props": "off"
+      "import/extensions": "off",
+      "import/no-unresolved": "off",
+      "react/jsx-filename-extension": "off",
+      "@typescript-eslint/explicit-function-return-type": "off"
     }
   },
   "browserslist": {
