@@ -23,6 +23,7 @@
 - https://honeykingdom.github.io/#wasd-cake
 - https://honeykingdom.github.io/#wasd-zanuda
 - https://honeykingdom.github.io/#wasd-lasqa
+- https://honeykingdom.github.io/#wasd-segall
 
 ## Параметры
 
