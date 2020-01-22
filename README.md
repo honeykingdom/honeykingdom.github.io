@@ -24,6 +24,7 @@
 - https://honeykingdom.github.io/#wasd-zanuda
 - https://honeykingdom.github.io/#wasd-lasqa
 - https://honeykingdom.github.io/#wasd-segall
+- https://honeykingdom.github.io/#wasd-guit88man
 
 ## Параметры
 
