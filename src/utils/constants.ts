@@ -69,6 +69,10 @@ export const PRESETS: Record<string, Preset> = {
     player: "wasd@111152",
     chats: "guit88man,wasd@111152"
   },
+  "wasd-nuke73": {
+    player: "wasd@103444",
+    chats: "nuke73,wasd@103444"
+  },
   youtube: {
     player: (id: string) => `youtube@${id}`,
     chats: (id: string) => `honeymad,youtube@${id}`
