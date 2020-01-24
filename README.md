@@ -17,6 +17,7 @@
 - https://honeykingdom.github.io/#gg-liz0n
 - https://honeykingdom.github.io/#gg-roadhouse
 - https://honeykingdom.github.io/#gg-zanuda
+- https://honeykingdom.github.io/#gg-nuke73
 
 ### Wasd
 
