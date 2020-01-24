@@ -45,6 +45,10 @@ export const PRESETS: Record<string, Preset> = {
     player: "goodgame@88446",
     chats: "zanuda,goodgame@88446"
   },
+  "gg-nuke73": {
+    player: "goodgame@3610",
+    chats: "nuke73,goodgame@3610"
+  },
   wasd: {
     player: "wasd@22196",
     chats: "honeymad,wasd@22196"
