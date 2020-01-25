@@ -20,19 +20,17 @@
     "@types/react-dom": "^16.9.5",
     "@types/styled-components": "^4.4.2",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
-    "@typescript-eslint/parser": "^2.17.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-typescript": "^6.3.1",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "gh-pages": "^2.2.0",
     "prettier": "^1.19.1",
     "ts-jest": "^25.0.0",
-    "tslint": "^6.0.0",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -44,27 +42,19 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
+    "env": {
+      "browser": true,
+      "jest": true
+    },
     "extends": [
-      "airbnb",
+      "airbnb-typescript",
+      "airbnb/hooks",
       "plugin:@typescript-eslint/recommended",
       "prettier",
       "prettier/react",
       "prettier/@typescript-eslint"
     ],
-    "plugins": [
-      "prettier",
-      "react-hooks",
-      "@typescript-eslint"
-    ],
-    "globals": {
-      "window": true,
-      "document": true
-    },
     "rules": {
-      "import/extensions": "off",
-      "import/no-unresolved": "off",
-      "react/jsx-filename-extension": "off",
       "@typescript-eslint/explicit-function-return-type": "off"
     }
   },
