@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { getPlayerUrl, getChatUrl } from "./streamServices";
 import getPlayerAndChat, { getFrame, DEFAULT_PRESET } from "./getPlayerAndChat";
 import { PRESETS, StreamService } from "./constants";
@@ -36,10 +35,10 @@ describe("getFrame", () => {
   });
 
   it("should parse other frames", () => {
-    const player = "goodgame";
+    const service = "goodgame";
     const payload = "99600";
 
-    expect(getFrame(`${player}@${payload}`, getPlayerUrl)).toEqual({
+    expect(getFrame(`${service}@${payload}`, getPlayerUrl)).toEqual({
       service: StreamService.goodgame,
       payload,
       url: getPlayerUrl(StreamService.goodgame, payload)
