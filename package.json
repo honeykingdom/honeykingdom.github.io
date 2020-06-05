@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://honeykingdom.github.io",
   "dependencies": {
+    "@primer/octicons": "^9.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
