@@ -1,23 +1,23 @@
-import { getPlayerUrl, getChatUrl } from "./streamServices";
-import { Frame, PresetText } from "./types";
-import { StreamService, PRESETS } from "./constants";
+import { getPlayerUrl, getChatUrl } from './streamServices';
+import type { Frame, PresetText } from './types';
+import { StreamService, PRESETS } from './constants';
 
 const YOUTUBE_PRESET_REGEX = /^(youtube)=([a-zA-Z0-9_-]{11})$/;
 
 export const DEFAULT_PRESET = PRESETS.wasd;
 const {
   player: DEFAULT_PLAYER,
-  chats: DEFAULT_CHATS
+  chats: DEFAULT_CHATS,
 } = DEFAULT_PRESET as PresetText;
 
-const CHANNEL_SEPARATOR = "@";
-const CHATS_SEPARATOR = ",";
+const CHANNEL_SEPARATOR = '@';
+const CHATS_SEPARATOR = ',';
 
 const isValidService = (service: string) => service in StreamService;
 
 export const getFrame = (
   urlParam: string | null,
-  getUrl: typeof getChatUrl | typeof getPlayerUrl
+  getUrl: typeof getChatUrl | typeof getPlayerUrl,
 ): Frame | null => {
   if (!urlParam) return null;
 
@@ -47,7 +47,7 @@ export const getFrame = (
   return {
     service,
     payload,
-    url: getUrl(service, payload)
+    url: getUrl(service, payload),
   };
 };
 
@@ -58,7 +58,7 @@ export const getPlayerFrame = (urlParam: string | null) => {
 };
 
 const getChats = (urlParam: string) =>
-  urlParam.split(CHATS_SEPARATOR).map(chat => getFrame(chat, getChatUrl));
+  urlParam.split(CHATS_SEPARATOR).map((chat) => getFrame(chat, getChatUrl));
 
 export const getChatFrames = (urlParam: string | null) => {
   const chats = getChats(urlParam || DEFAULT_CHATS);
@@ -77,8 +77,8 @@ type GetPlayerAndChatParams = {
 const getPlayerAndChat = ({ hash, searchParams }: GetPlayerAndChatParams) => {
   const search = new URLSearchParams(searchParams);
 
-  let playerText = search.get("player");
-  let chatsText = search.get("chats");
+  let playerText = search.get('player');
+  let chatsText = search.get('chats');
 
   // check hash
   const preset = hash.slice(1);
@@ -86,8 +86,8 @@ const getPlayerAndChat = ({ hash, searchParams }: GetPlayerAndChatParams) => {
   if (preset) {
     const match = YOUTUBE_PRESET_REGEX.exec(preset);
 
-    let presetService = "";
-    let presetPayload = "";
+    let presetService = '';
+    let presetPayload = '';
 
     if (match !== null) {
       const [, service, payload] = match;
@@ -102,8 +102,8 @@ const getPlayerAndChat = ({ hash, searchParams }: GetPlayerAndChatParams) => {
       const { player, chats } = PRESETS[presetService];
 
       playerText =
-        typeof player === "function" ? player(presetPayload) : player;
-      chatsText = typeof chats === "function" ? chats(presetPayload) : chats;
+        typeof player === 'function' ? player(presetPayload) : player;
+      chatsText = typeof chats === 'function' ? chats(presetPayload) : chats;
     }
   }
 

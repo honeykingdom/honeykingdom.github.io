@@ -1,4 +1,4 @@
-import { StreamService } from "./constants";
+import { StreamService } from './constants';
 
 type MakePresetField = (id: string) => string;
 

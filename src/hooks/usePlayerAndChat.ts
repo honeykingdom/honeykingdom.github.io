@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import getPlayerAndChat from "../utils/getPlayerAndChat";
+import { useState, useEffect } from 'react';
+import getPlayerAndChat from 'utils/getPlayerAndChat';
 
 const getPlayerAndChatData = () =>
   getPlayerAndChat({
     hash: window.location.hash,
-    searchParams: window.location.search
+    searchParams: window.location.search,
   });
 
 const usePlayerAndChat = () => {
@@ -15,9 +15,9 @@ const usePlayerAndChat = () => {
       setState(getPlayerAndChatData());
     };
 
-    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener('hashchange', handleHashChange);
 
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   return state;
