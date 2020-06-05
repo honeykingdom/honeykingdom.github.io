@@ -45,6 +45,9 @@
       "browser": true,
       "jest": true
     },
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
     "extends": [
       "airbnb-typescript",
       "airbnb/hooks",
@@ -56,6 +59,11 @@
     "rules": {
       "@typescript-eslint/explicit-function-return-type": "off"
     }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
   },
   "browserslist": {
     "production": [
