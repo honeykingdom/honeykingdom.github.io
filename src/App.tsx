@@ -22,14 +22,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 `;
-const Container = styled.div<{ isMobile: boolean }>`
+const Container = styled.div<{ $isMobile: boolean }>`
   display: flex;
   align-items: flex-start;
   height: 100vh;
   font-family: sans-serif;
 
   ${(p) =>
-    p.isMobile &&
+    p.$isMobile &&
     css`
       flex-direction: column;
       align-items: stretch;
@@ -43,8 +43,8 @@ const WasdIconOverflow = styled.div`
   height: 28px;
 `;
 type PlayerWrapperProps = {
-  service: StreamService;
-  isMobile: boolean;
+  $service: StreamService;
+  $isMobile: boolean;
 };
 const PlayerWrapper = styled.div<PlayerWrapperProps>`
   position: relative;
@@ -52,7 +52,7 @@ const PlayerWrapper = styled.div<PlayerWrapperProps>`
   height: 100%;
 
   ${(p) =>
-    p.service === StreamService.wasd &&
+    p.$service === StreamService.wasd &&
     css`
       --wasd-offset-top: 48px;
 
@@ -62,7 +62,7 @@ const PlayerWrapper = styled.div<PlayerWrapperProps>`
     `};
 
   ${(p) =>
-    p.isMobile &&
+    p.$isMobile &&
     css`
       height: auto;
       flex-grow: 0;
@@ -86,13 +86,13 @@ const Player = styled.iframe.attrs({
   width: 100%;
   height: 100%;
 `;
-const ChatsWrapper = styled.div<{ isMobile: boolean }>`
+const ChatsWrapper = styled.div<{ $isMobile: boolean }>`
   position: relative;
   flex-shrink: 0;
   width: var(--chat-witdh);
 
   ${(p) =>
-    p.isMobile &&
+    p.$isMobile &&
     css`
       width: 100%;
       flex-grow: 1;
@@ -103,12 +103,12 @@ const ChatTabs = styled.div`
   height: var(--chat-tabs-height);
   border-bottom: 1px solid var(--color-violet);
 `;
-const ChatTab = styled.div<{ active: boolean }>`
+const ChatTab = styled.div<{ $active: boolean }>`
   flex-grow: 1;
   flex-basis: 0;
-  color: ${(p) => (p.active ? '#d3d3d3' : '#898395')};
+  color: ${(p) => (p.$active ? '#d3d3d3' : '#898395')};
   background-color: ${(p) =>
-    p.active ? 'var(--color-violet-dark)' : 'var(--color-black)'};
+    p.$active ? 'var(--color-violet-dark)' : 'var(--color-black)'};
   font-family: sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -122,15 +122,15 @@ const ChatTab = styled.div<{ active: boolean }>`
     border-right: 1px solid var(--color-violet);
   }
 `;
-const Chat = styled.iframe<{ active: boolean; isMobile: boolean }>`
-  display: ${(p) => (p.active ? 'block' : 'none')};
+const Chat = styled.iframe<{ $active: boolean; $isMobile: boolean }>`
+  display: ${(p) => (p.$active ? 'block' : 'none')};
   width: 100%;
   height: calc(100vh - var(--chat-tabs-height));
   border: none;
   background-color: #fff;
 
   ${(p) =>
-    p.isMobile &&
+    p.$isMobile &&
     css`
       height: calc(100% - var(--chat-tabs-height));
     `}
@@ -153,20 +153,20 @@ const App = () => {
 
   return (
     <>
-      <Container isMobile={isMobile}>
-        <PlayerWrapper service={player.service} isMobile={isMobile}>
+      <Container $isMobile={isMobile}>
+        <PlayerWrapper $service={player.service} $isMobile={isMobile}>
           <Player
             src={player.url}
             title={`${player.service} - ${player.payload}`}
           />
         </PlayerWrapper>
         {player.service === StreamService.wasd && <WasdIconOverflow />}
-        <ChatsWrapper isMobile={isMobile}>
+        <ChatsWrapper $isMobile={isMobile}>
           <ChatTabs>
             {chats.map((chat) => (
               <ChatTab
                 key={chat.url}
-                active={chat.url === activeChat}
+                $active={chat.url === activeChat}
                 onClick={() => setActiveChat(chat.url)}
               >
                 {getChatTabTitle(chat)}
@@ -176,9 +176,9 @@ const App = () => {
           {renderedChatFrames.map(({ url }) => (
             <Chat
               key={url}
-              active={url === activeChat}
               src={url}
-              isMobile={isMobile}
+              $active={url === activeChat}
+              $isMobile={isMobile}
             />
           ))}
         </ChatsWrapper>
