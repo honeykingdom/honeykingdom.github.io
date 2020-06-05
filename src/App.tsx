@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga';
 import styled, { createGlobalStyle, css } from 'styled-components';
+import { ReactComponent as MargGitHubSvg } from '@primer/octicons/build/svg/mark-github.svg';
 
 import { StreamService } from 'utils/constants';
 import type { Frame } from 'utils/types';
@@ -103,6 +105,10 @@ const ChatTabs = styled.div`
   height: var(--chat-tabs-height);
   border-bottom: 1px solid var(--color-violet);
 `;
+const ChatTabsInner = styled.div`
+  display: flex;
+  flex-grow: 1;
+`;
 const ChatTab = styled.div<{ $active: boolean }>`
   flex-grow: 1;
   flex-basis: 0;
@@ -114,12 +120,26 @@ const ChatTab = styled.div<{ $active: boolean }>`
   font-weight: bold;
   line-height: var(--chat-tabs-height);
   text-align: center;
+  border-right: 1px solid var(--color-violet);
   cursor: pointer;
+
   &:hover {
     background-color: var(--color-violet-dark);
   }
-  &:not(:last-child) {
-    border-right: 1px solid var(--color-violet);
+`;
+const GitHubLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--chat-tabs-height);
+  background-color: var(--color-black);
+
+  &:hover {
+    background-color: var(--color-violet-dark);
+  }
+
+  svg path {
+    fill: #898395;
   }
 `;
 const Chat = styled.iframe<{ $active: boolean; $isMobile: boolean }>`
@@ -135,6 +155,12 @@ const Chat = styled.iframe<{ $active: boolean; $isMobile: boolean }>`
       height: calc(100% - var(--chat-tabs-height));
     `}
 `;
+
+const handleGitHubLinkClick = () =>
+  ReactGA.event({
+    category: 'User Interface',
+    action: 'GitHub Repository Click',
+  });
 
 const App = () => {
   const { player, chats } = usePlayerAndChat();
@@ -163,15 +189,26 @@ const App = () => {
         {player.service === StreamService.wasd && <WasdIconOverflow />}
         <ChatsWrapper $isMobile={isMobile}>
           <ChatTabs>
-            {chats.map((chat) => (
-              <ChatTab
-                key={chat.url}
-                $active={chat.url === activeChat}
-                onClick={() => setActiveChat(chat.url)}
-              >
-                {getChatTabTitle(chat)}
-              </ChatTab>
-            ))}
+            <ChatTabsInner>
+              {chats.map((chat) => (
+                <ChatTab
+                  key={chat.url}
+                  $active={chat.url === activeChat}
+                  onClick={() => setActiveChat(chat.url)}
+                >
+                  {getChatTabTitle(chat)}
+                </ChatTab>
+              ))}
+            </ChatTabsInner>
+            <GitHubLink
+              target="_blank"
+              rel="noreferrer noopener"
+              href="//github.com/honeykingdom/honeykingdom.github.io"
+              title="Репозиторий на GitHub"
+              onClick={handleGitHubLinkClick}
+            >
+              <MargGitHubSvg />
+            </GitHubLink>
           </ChatTabs>
           {renderedChatFrames.map(({ url }) => (
             <Chat
