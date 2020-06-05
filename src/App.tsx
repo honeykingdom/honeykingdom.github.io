@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import styled, { createGlobalStyle, css } from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
-import Player from "./Player";
-import { StreamService } from "./utils/constants";
-import { Frame } from "./utils/types";
-import getChatTabTitle from "./utils/getChatTabTitle";
-import usePlayerAndChat from "./hooks/usePlayerAndChat";
-import useIsMobile from "./hooks/useIsMobile";
+import { StreamService } from 'utils/constants';
+import type { Frame } from 'utils/types';
+import getChatTabTitle from 'utils/getChatTabTitle';
+import usePlayerAndChat from 'hooks/usePlayerAndChat';
+import useIsMobile from 'hooks/useIsMobile';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -29,7 +28,7 @@ const Container = styled.div<{ isMobile: boolean }>`
   height: 100vh;
   font-family: sans-serif;
 
-  ${p =>
+  ${(p) =>
     p.isMobile &&
     css`
       flex-direction: column;
@@ -51,7 +50,7 @@ const PlayerWrapper = styled.div<{
   flex-grow: 1;
   height: 100%;
 
-  ${p =>
+  ${(p) =>
     p.service === StreamService.wasd &&
     css`
       --wasd-offset-top: 48px;
@@ -61,7 +60,7 @@ const PlayerWrapper = styled.div<{
       margin-right: -320px;
     `};
 
-  ${p =>
+  ${(p) =>
     p.isMobile &&
     css`
       height: auto;
@@ -70,12 +69,15 @@ const PlayerWrapper = styled.div<{
 
       &:after {
         display: block;
-        content: "";
+        content: '';
         padding-top: 56.25%;
       }
     `}
 `;
-const StyledPlayer = styled(Player)`
+const Player = styled.iframe.attrs({
+  allow: 'autoplay',
+  allowFullScreen: true,
+})`
   position: absolute;
   top: 0;
   left: 0;
@@ -88,7 +90,7 @@ const ChatsWrapper = styled.div<{ isMobile: boolean }>`
   flex-shrink: 0;
   width: var(--chat-witdh);
 
-  ${p =>
+  ${(p) =>
     p.isMobile &&
     css`
       width: 100%;
@@ -103,9 +105,9 @@ const ChatTabs = styled.div`
 const ChatTab = styled.div<{ active: boolean }>`
   flex-grow: 1;
   flex-basis: 0;
-  color: ${p => (p.active ? "#d3d3d3" : "#898395")};
-  background-color: ${p =>
-    p.active ? "var(--color-violet-dark)" : "var(--color-black)"};
+  color: ${(p) => (p.active ? '#d3d3d3' : '#898395')};
+  background-color: ${(p) =>
+    p.active ? 'var(--color-violet-dark)' : 'var(--color-black)'};
   font-family: sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -120,13 +122,13 @@ const ChatTab = styled.div<{ active: boolean }>`
   }
 `;
 const Chat = styled.iframe<{ active: boolean; isMobile: boolean }>`
-  display: ${p => (p.active ? "block" : "none")};
+  display: ${(p) => (p.active ? 'block' : 'none')};
   width: 100%;
   height: calc(100vh - var(--chat-tabs-height));
   border: none;
   background-color: #fff;
 
-  ${p =>
+  ${(p) =>
     p.isMobile &&
     css`
       height: calc(100% - var(--chat-tabs-height));
@@ -145,14 +147,14 @@ const App = () => {
   // remove wads chat if it the same as the player
   const renderedChatFrames = chats.filter(
     ({ service, payload }: Frame) =>
-      !(service === StreamService.wasd && payload === player.payload)
+      !(service === StreamService.wasd && payload === player.payload),
   );
 
   return (
     <>
       <Container isMobile={isMobile}>
         <PlayerWrapper service={player.service} isMobile={isMobile}>
-          <StyledPlayer
+          <Player
             src={player.url}
             title={`${player.service} - ${player.payload}`}
           />
@@ -160,7 +162,7 @@ const App = () => {
         {player.service === StreamService.wasd && <WasdIconOverflow />}
         <ChatsWrapper isMobile={isMobile}>
           <ChatTabs>
-            {chats.map(chat => (
+            {chats.map((chat) => (
               <ChatTab
                 key={chat.url}
                 active={chat.url === activeChat}
