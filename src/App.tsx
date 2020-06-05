@@ -42,10 +42,11 @@ const WasdIconOverflow = styled.div`
   width: 32px;
   height: 28px;
 `;
-const PlayerWrapper = styled.div<{
+type PlayerWrapperProps = {
   service: StreamService;
   isMobile: boolean;
-}>`
+};
+const PlayerWrapper = styled.div<PlayerWrapperProps>`
   position: relative;
   flex-grow: 1;
   height: 100%;
