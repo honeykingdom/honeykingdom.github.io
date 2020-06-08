@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { ReactComponent as MargGitHubSvg } from '@primer/octicons/build/svg/mark-github.svg';
+import { ReactComponent as MarkGitHubSvg } from '@primer/octicons/build/svg/mark-github.svg';
 
 import { StreamService } from 'utils/constants';
 import type { Frame } from 'utils/types';
@@ -207,7 +207,7 @@ const App = () => {
               title="Репозиторий на GitHub"
               onClick={handleGitHubLinkClick}
             >
-              <MargGitHubSvg />
+              <MarkGitHubSvg />
             </GitHubLink>
           </ChatTabs>
           {renderedChatFrames.map(({ url }) => (
