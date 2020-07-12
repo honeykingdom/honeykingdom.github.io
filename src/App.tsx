@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { ReactComponent as MarkGitHubSvg } from '@primer/octicons/build/svg/mark-github.svg';
+import { ReactComponent as MarkGitHubSvg } from '@primer/octicons/build/svg/mark-github-16.svg';
 
 import { StreamService } from 'utils/constants';
 import type { Frame } from 'utils/types';
