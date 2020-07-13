@@ -6,7 +6,6 @@
 - https://honeykingdom.github.io/#gg
 - https://honeykingdom.github.io/#wasd
 - https://honeykingdom.github.io/#youtube=dQw4w9WgXcQ
-- https://honeykingdom.github.io/#mixer
 
 ### Goodgame
 
@@ -43,7 +42,6 @@
 | youtube  | youtube@id_видео      | youtube@dQw4w9WgXcQ |
 | goodgame | goodgame@id_канала \* | goodgame@41677      |
 | wasd     | wasd@id_канала        | wasd@22196          |
-| mixer    | mixer@название_канала | mixer@JoaquinPanis  |
 
 \* (id можно узнать в url нажав на "Плеер в окне" или "Чат в окне")
 
