@@ -5,7 +5,6 @@ export enum StreamService {
   youtube = 'youtube',
   goodgame = 'goodgame',
   wasd = 'wasd',
-  mixer = 'mixer',
 }
 
 export const PRESETS: Record<string, Preset> = {
@@ -80,9 +79,5 @@ export const PRESETS: Record<string, Preset> = {
   youtube: {
     player: (id: string) => `youtube@${id}`,
     chats: (id: string) => `honeymad,youtube@${id}`,
-  },
-  mixer: {
-    player: 'mixer@JoaquinPanis',
-    chats: 'honeymad,mixer@JoaquinPanis',
   },
 };

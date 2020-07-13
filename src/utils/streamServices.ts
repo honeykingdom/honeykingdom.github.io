@@ -6,7 +6,6 @@ const chats = {
   [StreamService.youtube]: (id: string) => `//www.youtube.com/live_chat?v=${id}&is_popout=1`,
   [StreamService.goodgame]: (id: string) => `//goodgame.ru/chat/${id}`,
   [StreamService.wasd]: (id: string) => `//wasd.tv/chat?channel_id=${id}`,
-  [StreamService.mixer]: (channel: string) => `//mixer.com/embed/chat/${channel}`
 };
 
 // prettier-ignore
@@ -15,7 +14,6 @@ const players = {
   [StreamService.youtube]: (id: string) => `//www.youtube.com/embed/${id}?autoplay=1`,
   [StreamService.goodgame]: (id: string) => `//goodgame.ru/player?${id}`,
   [StreamService.wasd]: (id: string) => `//wasd.tv/channel/${id}`,
-  [StreamService.mixer]: (channel: string) => `//mixer.com/embed/player/${channel}`
 };
 
 export const getChatUrl = (service: StreamService, payload: string) =>

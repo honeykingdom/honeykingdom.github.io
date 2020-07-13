@@ -93,7 +93,7 @@ describe('getStreamServices', () => {
   // url params
   it('sould handle valid "player" value', () => {
     const player1 = 'lasqa';
-    const player2 = 'mixer@JoaquinPanis';
+    const player2 = 'goodgame@137757';
 
     expect(
       getPlayerAndChat({
@@ -177,7 +177,7 @@ describe('getStreamServices', () => {
     const player1 = 'honeymad';
     const chats1 = 'youtube@dQw4w9WgXcQ';
     const player2 = 'goodgame@41677';
-    const chats2 = 'lasqa,mixer@JoaquinPanis';
+    const chats2 = 'lasqa,goodgame@137757';
 
     expect(
       getPlayerAndChat({
