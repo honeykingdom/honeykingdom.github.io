@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     --color-violet: #2c2541;
     --color-violet-dark: #1f1925;
     --chat-tabs-height: 20px;
-    --chat-witdh: 340px;
+    --chat-width: 340px;
   }
   * {
     box-sizing: border-box;
@@ -40,7 +40,7 @@ const Container = styled.div<{ $isMobile: boolean }>`
 const WasdIconOverflow = styled.div`
   position: absolute;
   top: 54px;
-  right: var(--chat-witdh);
+  right: var(--chat-width);
   width: 32px;
   height: 28px;
 `;
@@ -91,7 +91,7 @@ const Player = styled.iframe.attrs({
 const ChatsWrapper = styled.div<{ $isMobile: boolean }>`
   position: relative;
   flex-shrink: 0;
-  width: var(--chat-witdh);
+  width: var(--chat-width);
 
   ${(p) =>
     p.$isMobile &&
