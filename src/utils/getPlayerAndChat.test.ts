@@ -55,7 +55,7 @@ describe('getStreamServices', () => {
   });
 
   // hash
-  it('sould handle preset', () => {
+  it('should handle preset', () => {
     const name = 'gg-lasqa';
     const { player, chats } = PRESETS[name] as PresetText;
 
@@ -65,7 +65,7 @@ describe('getStreamServices', () => {
     });
   });
 
-  it('sould handle preset with function', () => {
+  it('should handle preset with function', () => {
     const name = 'youtube';
     const payload = 'dQw4w9WgXcQ';
     const { player, chats } = PRESETS[name] as PresetFunction;
@@ -81,7 +81,7 @@ describe('getStreamServices', () => {
     });
   });
 
-  it('sould handle nonexistent preset', () => {
+  it('should handle nonexistent preset', () => {
     expect(
       getPlayerAndChat({
         hash: '#nonexistentpreset',
@@ -91,7 +91,7 @@ describe('getStreamServices', () => {
   });
 
   // url params
-  it('sould handle valid "player" value', () => {
+  it('should handle valid "player" value', () => {
     const player1 = 'lasqa';
     const player2 = 'goodgame@137757';
 
@@ -116,7 +116,7 @@ describe('getStreamServices', () => {
     });
   });
 
-  it('sould handle invalid "player" value', () => {
+  it('should handle invalid "player" value', () => {
     expect(
       getPlayerAndChat({
         hash: '',
@@ -132,7 +132,7 @@ describe('getStreamServices', () => {
     ).toEqual(DEFAULT_PLAYER_AND_CHAT);
   });
 
-  it('sould handle valid "chats" values', () => {
+  it('should handle valid "chats" values', () => {
     const chats1 = `goodgame@41677`;
     const chats2 = `honeymad,goodgame@41677`;
 
@@ -157,7 +157,7 @@ describe('getStreamServices', () => {
     });
   });
 
-  it('sould handle invalid "chats" values', () => {
+  it('should handle invalid "chats" values', () => {
     expect(
       getPlayerAndChat({
         hash: '',
@@ -173,7 +173,7 @@ describe('getStreamServices', () => {
     ).toEqual(DEFAULT_PLAYER_AND_CHAT);
   });
 
-  it('sould handle both valid "player" and "chats" values', () => {
+  it('should handle both valid "player" and "chats" values', () => {
     const player1 = 'honeymad';
     const chats1 = 'youtube@dQw4w9WgXcQ';
     const player2 = 'goodgame@41677';
@@ -200,7 +200,7 @@ describe('getStreamServices', () => {
     });
   });
 
-  it('sould handle both invalid "player" and "chats" values', () => {
+  it('should handle both invalid "player" and "chats" values', () => {
     expect(
       getPlayerAndChat({
         hash: '',
