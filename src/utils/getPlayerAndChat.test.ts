@@ -19,9 +19,7 @@ const DEFAULT_PLAYER_AND_CHAT = {
 
 describe('getFrame', () => {
   it('should return null for invalid values', () => {
-    const player = 'someservice@username';
-
-    expect(getFrame(player, getPlayerUrl)).toBe(null);
+    expect(getFrame('someservice@username', getPlayerUrl)).toBe(null);
   });
 
   it('should parse twitch frame', () => {
