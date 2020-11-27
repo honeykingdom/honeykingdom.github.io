@@ -26,6 +26,7 @@
 - https://honeykingdom.github.io/#wasd-segall
 - https://honeykingdom.github.io/#wasd-guit88man
 - https://honeykingdom.github.io/#wasd-nuke73
+- https://honeykingdom.github.io/#wasd-arrowwood
 
 ## Параметры
 
