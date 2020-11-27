@@ -78,7 +78,7 @@ export const PRESETS: Record<string, Preset> = {
   },
   'wasd-arrowwoods': {
     player: 'wasd@47282',
-    chats: 'arrowwoods,goodgame@99600,wasd@47282',
+    chats: 'arrowwoods,goodgame@180813,wasd@47282',
   },
   youtube: {
     player: (id: string) => `youtube@${id}`,
