@@ -89,4 +89,8 @@ export const PRESETS: Record<string, Preset> = {
     player: (id: string) => `youtube@${id}`,
     chats: (id: string) => `honeymad,youtube@${id}`,
   },
+  'rt-lasqa': {
+    player: (id: string) => `rutube@${id}`,
+    chats: () => 'lasqa',
+  },
 };
