@@ -5,6 +5,7 @@ export enum StreamService {
   youtube = 'youtube',
   goodgame = 'goodgame',
   wasd = 'wasd',
+  rutube = 'rutube',
 }
 
 export const PRESETS: Record<string, Preset> = {
