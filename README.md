@@ -43,6 +43,7 @@
 | youtube  | youtube@id_видео      | youtube@dQw4w9WgXcQ |
 | goodgame | goodgame@id_канала \* | goodgame@41677      |
 | wasd     | wasd@id_канала        | wasd@22196          |
+| rutube   | rutube@id_канала      | rutube@22196        |
 
 \* (id можно узнать в url нажав на "Плеер в окне" или "Чат в окне")
 
