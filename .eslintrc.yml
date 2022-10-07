@@ -1,0 +1,14 @@
+env:
+  browser: true
+  jest: true
+parserOptions:
+  project: './tsconfig.json'
+extends:
+  - airbnb
+  - airbnb-typescript
+  - airbnb/hooks
+  - plugin:@typescript-eslint/recommended
+  - plugin:@next/next/recommended
+  - prettier
+rules:
+  '@typescript-eslint/explicit-module-boundary-types': off
