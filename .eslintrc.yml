@@ -11,4 +11,6 @@ extends:
   - plugin:@next/next/recommended
   - prettier
 rules:
+  'react/react-in-jsx-scope': off
+  'react/function-component-definition': off
   '@typescript-eslint/explicit-module-boundary-types': off
