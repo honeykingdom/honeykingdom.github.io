@@ -55,7 +55,7 @@ export const PRESETS: Record<string, Preset> = {
   },
   'gg-praden': {
     player: 'goodgame@176695',
-    chats: 'praden',
+    chats: 'praden,goodgame@176695',
   },
   wasd: {
     player: 'wasd@22196',
