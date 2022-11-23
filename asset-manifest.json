@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/static/js/main.e2f11eff.js",
+    "main.js": "/static/js/main.4702920b.js",
     "index.html": "/index.html",
     "static/media/mark-github-16.svg": "/static/media/mark-github-16.0c43ec4b7f7bd38e20161a0d28230b7d.svg",
-    "main.e2f11eff.js.map": "/static/js/main.e2f11eff.js.map"
+    "main.4702920b.js.map": "/static/js/main.4702920b.js.map"
   },
   "entrypoints": [
-    "static/js/main.e2f11eff.js"
+    "static/js/main.4702920b.js"
   ]
 }
