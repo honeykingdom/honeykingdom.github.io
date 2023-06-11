@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
-import ReactGA from 'react-ga';
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { ReactComponent as MarkGitHubSvg } from '@primer/octicons/build/svg/mark-github-16.svg';
+import MarkGitHubSvg from '@primer/octicons/build/svg/mark-github-16.svg';
 
-import { StreamService } from 'utils/constants';
-import type { Frame } from 'utils/types';
-import getChatTabTitle from 'utils/getChatTabTitle';
-import usePlayerAndChat from 'hooks/usePlayerAndChat';
-import useIsMobile from 'hooks/useIsMobile';
+import { StreamService } from './utils/constants';
+import type { Frame } from './utils/types';
+import getChatTabTitle from './utils/getChatTabTitle';
+import usePlayerAndChat from './hooks/usePlayerAndChat';
+import useIsMobile from './hooks/useIsMobile';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -157,12 +156,12 @@ const Chat = styled.iframe<{ $active: boolean; $isMobile: boolean }>`
 `;
 
 const handleGitHubLinkClick = () =>
-  ReactGA.event({
+  ga('send', {
     category: 'User Interface',
-    action: 'GitHub Repository Click',
+    eventAction: 'GitHub Repository Click',
   });
 
-const App = () => {
+const Home = () => {
   const { player, chats } = usePlayerAndChat();
   const [activeChat, setActiveChat] = useState(chats[0].url);
 
@@ -176,6 +175,8 @@ const App = () => {
     ({ service, payload }: Frame) =>
       !(service === StreamService.wasd && payload === player.payload),
   );
+
+  console.log({ player, chats });
 
   return (
     <>
@@ -225,4 +226,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
