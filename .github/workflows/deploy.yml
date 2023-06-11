@@ -19,6 +19,8 @@ jobs:
 
       - name: Build
         run: yarn build
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
 
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3
