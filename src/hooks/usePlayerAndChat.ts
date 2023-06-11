@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getPlayerAndChat from 'utils/getPlayerAndChat';
+import getPlayerAndChat from '../utils/getPlayerAndChat';
 
 const getPlayerAndChatData = () =>
   getPlayerAndChat({

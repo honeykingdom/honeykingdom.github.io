@@ -1,12 +1,14 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { getPlayerUrl, getChatUrl } from './streamServices';
 import getPlayerAndChat, { getFrame, DEFAULT_PRESET } from './getPlayerAndChat';
 import { PRESETS, StreamService } from './constants';
 import type { PresetText, PresetFunction } from './types';
 
-const {
-  player: DEFAULT_PLAYER,
-  chats: DEFAULT_CHATS,
-} = DEFAULT_PRESET as PresetText;
+const { player: DEFAULT_PLAYER, chats: DEFAULT_CHATS } =
+  DEFAULT_PRESET as PresetText;
 
 const getPlayer = (player: string) => getFrame(player, getPlayerUrl);
 const getChats = (chats: string) =>
