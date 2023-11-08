@@ -11,8 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "yarn jest",
-    "predeploy": "yarn build",
+    "test": "pnpm jest",
+    "predeploy": "pnpm build",
     "deploy": "gh-pages -b master -d out"
   },
   "dependencies": {
