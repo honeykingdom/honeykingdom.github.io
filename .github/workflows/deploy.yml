@@ -13,7 +13,7 @@ jobs:
       - run: corepack enable
       - run: corepack prepare pnpm@latest --activate
       - run: pnpm i
-      - run: pnpm test --ci --coverage --maxWorkers=2
+      - run: pnpm test
       - run: pnpm build
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
