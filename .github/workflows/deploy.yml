@@ -11,14 +11,17 @@ jobs:
       - name: Begin CI...
         uses: actions/checkout@v2
 
-      - name: Install dependencies (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Install pnpm
+        run: corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm i
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: pnpm test --ci --coverage --maxWorkers=2
 
       - name: Build
-        run: yarn build
+        run: pnpm build
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
 
