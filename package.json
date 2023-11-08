@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "yarn jest",
-    "predeploy": "yarn build && yarn export",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -b master -d out"
   },
   "dependencies": {
