@@ -4,11 +4,9 @@ import { StreamService, PRESETS } from './constants';
 
 const YOUTUBE_PRESET_REGEX = /^(youtube)=([a-zA-Z0-9_-]{11})$/;
 
-export const DEFAULT_PRESET = PRESETS.wasd;
-const {
-  player: DEFAULT_PLAYER,
-  chats: DEFAULT_CHATS,
-} = DEFAULT_PRESET as PresetText;
+export const DEFAULT_PRESET = PRESETS['gg-arrowwoods'];
+const { player: DEFAULT_PLAYER, chats: DEFAULT_CHATS } =
+  DEFAULT_PRESET as PresetText;
 
 const CHANNEL_SEPARATOR = '@';
 const CHATS_SEPARATOR = ',';
@@ -64,9 +62,9 @@ export const getChatFrames = (urlParam: string | null) => {
   const chats = getChats(urlParam || DEFAULT_CHATS);
   const validChats = chats.filter(Boolean);
 
-  return (validChats.length > 0
-    ? validChats
-    : getChats(DEFAULT_CHATS)) as Frame[];
+  return (
+    validChats.length > 0 ? validChats : getChats(DEFAULT_CHATS)
+  ) as Frame[];
 };
 
 type GetPlayerAndChatParams = {

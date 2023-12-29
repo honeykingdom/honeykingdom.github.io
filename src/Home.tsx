@@ -53,16 +53,6 @@ const PlayerWrapper = styled.div<PlayerWrapperProps>`
   height: 100%;
 
   ${(p) =>
-    p.$service === StreamService.wasd &&
-    css`
-      --wasd-offset-top: 48px;
-
-      height: calc(100% + var(--wasd-offset-top));
-      margin-top: calc(-1 * var(--wasd-offset-top));
-      margin-right: -320px;
-    `};
-
-  ${(p) =>
     p.$isMobile &&
     css`
       height: auto;
@@ -165,18 +155,13 @@ const Home = () => {
   const { player, chats } = usePlayerAndChat();
   const [activeChat, setActiveChat] = useState(chats[0].url);
 
-  const isMobileSize = useIsMobile();
-  const isMobile = isMobileSize && player.service !== StreamService.wasd;
+  const isMobile = useIsMobile();
 
   useEffect(() => setActiveChat(chats[0].url), [setActiveChat, chats]);
 
-  // remove wads chat if it the same as the player
   const renderedChatFrames = chats.filter(
-    ({ service, payload }: Frame) =>
-      !(service === StreamService.wasd && payload === player.payload),
+    ({ payload }: Frame) => payload !== player.payload,
   );
-
-  console.log({ player, chats });
 
   return (
     <>
@@ -187,7 +172,6 @@ const Home = () => {
             title={`${player.service} - ${player.payload}`}
           />
         </PlayerWrapper>
-        {player.service === StreamService.wasd && <WasdIconOverflow />}
         <ChatsWrapper $isMobile={isMobile}>
           <ChatTabs>
             <ChatTabsInner>
