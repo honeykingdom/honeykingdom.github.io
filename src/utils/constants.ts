@@ -15,39 +15,31 @@ export const PRESETS: Record<string, Preset> = {
   },
   gg: {
     player: 'goodgame@41677',
-    chats: 'honeymad,goodgame@41677',
+    chats: 'honeymad,goodgame@Maddyson',
   },
   'gg-lasqa': {
     player: 'goodgame@99600',
-    chats: 'lasqa,goodgame@99600',
+    chats: 'lasqa,goodgame@gegeboyz',
   },
   'gg-segall': {
-    player: 'goodgame@99600',
-    chats: 'segall,goodgame@99600',
+    player: 'goodgame@172112',
+    chats: 'segall,goodgame@pleb',
   },
   'gg-arrowwoods': {
     player: 'goodgame@137757',
-    chats: 'arrowwoods,goodgame@137757',
+    chats: 'arrowwoods,goodgame@Arrowwood',
   },
   'gg-melharucos': {
     player: 'goodgame@171713',
-    chats: 'melharucos,goodgame@171713',
+    chats: 'melharucos,goodgame@melharucos',
   },
   'gg-liz0n': {
-    player: 'goodgame@79564',
-    chats: 'liz0n,goodgame@79564',
+    player: 'goodgame@188564',
+    chats: 'liz0n,goodgame@KINOklub',
   },
   'gg-roadhouse': {
-    player: 'goodgame@130743',
-    chats: 'roadhouse,goodgame@130743',
-  },
-  'gg-zanuda': {
-    player: 'goodgame@88446',
-    chats: 'zanuda,goodgame@88446',
-  },
-  'gg-nuke73': {
-    player: 'goodgame@3610',
-    chats: 'nuke73,goodgame@3610',
+    player: 'goodgame@165622',
+    chats: 'roadhouse,goodgame@r0adhousegg',
   },
   'gg-peacedaria': {
     player: 'goodgame@187660',
@@ -55,7 +47,7 @@ export const PRESETS: Record<string, Preset> = {
   },
   'gg-praden': {
     player: 'goodgame@176695',
-    chats: 'praden,goodgame@176695',
+    chats: 'praden,goodgame@Praden',
   },
   youtube: {
     player: (id: string) => `youtube@${id}`,
